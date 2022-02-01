@@ -9,18 +9,14 @@ VELOCITY=5
 
 GAME = pygame.display.set_mode((900,600))
 
-BACK = pygame.image.load("Squirrel/tile.jpg")
-
-
-
-
+BACK = pygame.image.load("Assets/tile.jpg")
 BACK = pygame.transform.scale(BACK,(WIDTH,HEIGHT))
 
 
-
-NUT = pygame.image.load("Squirrel/nut.png")
+NUT = pygame.image.load("Assets/nut.png")
 NUT = pygame.transform.scale(NUT,(50,50))
-SQUIRREL=pygame.image.load("Squirrel/squirrel01.png")
+
+SQUIRREL=pygame.image.load("Assets/squirrel.png")
 SQUIRREL=pygame.transform.scale(SQUIRREL,(110,110))
 
 
