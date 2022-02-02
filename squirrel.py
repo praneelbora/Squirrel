@@ -29,20 +29,24 @@ def draw(squirrel,nut,SCORE):
     GAME.blit(BACK,(0,0))
     GAME.blit(NUT,(nut.x,nut.y))
     GAME.blit(SQUIRREL,(squirrel.x,squirrel.y))
-    score = SCORE__FONT.render("Score : ",+(SCORE),True)
+    score = SCORE__FONT.render("SCORE : "+str(SCORE),1,True)
     GAME.blit(score,(0,0))
     pygame.display.update()
 
 
-def move_nut(squirrel,nut,nuts):
+def move_nut(squirrel,nut,nuts,SCORE):
     
     for nut in nuts:
         nut.y +=VELOCITY
         if squirrel.colliderect(nut):
             pygame.event.post(pygame.event.Event(NUT_COLLECTED))
+            SCORE +=2
+            nut.y=1000
             nuts.remove(nut)
         elif nut.y + VELOCITY> 650:
             nuts.remove(nut)
+            SCORE -=1
+            nut.y=1000
 
 
 
@@ -80,9 +84,10 @@ def main():
         if event.type == NUT_COLLECTED:
             SCORE +=1
         keypress = pygame.key.get_pressed()
-        move_squirrel(keypress,squirrel)
-        move_nut(squirrel,nut,nuts)
+        move_squirrel(keypress,squirrel,)
+        move_nut(squirrel,nut,nuts,SCORE)
         draw(squirrel,nut,SCORE)  
     pygame.quit()
+    print("\n\n",SCORE,"\n\n")
 if __name__ == '__main__':
     main()
