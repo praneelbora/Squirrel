@@ -63,13 +63,17 @@ def main():
     
     GAME.fill(BG)
     while running:
-        
-        time +=1
         loc=  random.randrange(0,850,50)
-        clock.tick(FPS)
-        if time %100 ==0:
+        number=100
+        if time %number <1:
             nut = pygame.Rect(loc,100,50,50)
             nuts.append(nut)
+            if time>number:
+                time/=number
+        time +=1
+        
+        clock.tick(FPS)
+        
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running=False
