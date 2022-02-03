@@ -25,6 +25,7 @@ SQUIRREL=pygame.transform.scale(SQUIRREL,(110,110))
 
 NUT_COLLECTED = pygame.USEREVENT +1
 
+
 def draw(squirrel,nut,SCORE):
     GAME.blit(BACK,(0,0))
     GAME.blit(NUT,(nut.x,nut.y))
@@ -40,12 +41,10 @@ def move_nut(squirrel,nut,nuts,SCORE):
         nut.y +=VELOCITY
         if squirrel.colliderect(nut):
             pygame.event.post(pygame.event.Event(NUT_COLLECTED))
-            SCORE +=2
             nut.y=1000
             nuts.remove(nut)
         elif nut.y + VELOCITY> 650:
             nuts.remove(nut)
-            SCORE -=1
             nut.y=1000
 
 
@@ -81,8 +80,8 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running=False
-        if event.type == NUT_COLLECTED:
-            SCORE +=1
+            if event.type == NUT_COLLECTED:
+                SCORE +=1
         keypress = pygame.key.get_pressed()
         move_squirrel(keypress,squirrel,)
         move_nut(squirrel,nut,nuts,SCORE)
