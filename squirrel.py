@@ -10,7 +10,7 @@ pygame.mixer.init()
 SCORE__FONT = pygame.font.SysFont('comicsans',32)
 
 N_VELOCITY=5
-S_VELOCITY=6
+S_VELOCITY=6.5
 
 GAME = pygame.display.set_mode((900,600))
 
