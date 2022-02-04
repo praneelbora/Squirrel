@@ -8,7 +8,9 @@ FPS=60
 pygame.font.init()
 pygame.mixer.init()
 SCORE__FONT = pygame.font.SysFont('comicsans',32)
-VELOCITY=5
+
+N_VELOCITY=5
+S_VELOCITY=6
 
 GAME = pygame.display.set_mode((900,600))
 
@@ -38,12 +40,12 @@ def draw(squirrel,nut,SCORE):
 def move_nut(squirrel,nut,nuts,SCORE):
     
     for nut in nuts:
-        nut.y +=VELOCITY
+        nut.y +=N_VELOCITY
         if squirrel.colliderect(nut):
             pygame.event.post(pygame.event.Event(NUT_COLLECTED))
             nut.y=1000
             nuts.remove(nut)
-        elif nut.y + VELOCITY> 650:
+        elif nut.y + N_VELOCITY> 650:
             nuts.remove(nut)
             nut.y=1000
 
@@ -51,10 +53,10 @@ def move_nut(squirrel,nut,nuts,SCORE):
 
 
 def move_squirrel(keypress,squirrel):
-    if (keypress[pygame.K_LEFT] and squirrel.x-VELOCITY>0):
-        squirrel.x -= VELOCITY 
-    if (keypress[pygame.K_RIGHT] and squirrel.x+VELOCITY+squirrel.width<WIDTH):
-        squirrel.x += VELOCITY 
+    if (keypress[pygame.K_LEFT] and squirrel.x-S_VELOCITY>0):
+        squirrel.x -= S_VELOCITY 
+    if (keypress[pygame.K_RIGHT] and squirrel.x+S_VELOCITY+squirrel.width<WIDTH):
+        squirrel.x += S_VELOCITY 
 
 def main():
     running = True
