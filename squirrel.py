@@ -27,7 +27,6 @@ SQUIRREL=pygame.transform.scale(SQUIRREL,(110,110))
 
 NUT_COLLECTED = pygame.USEREVENT +1
 
-
 def draw(squirrel,nut,SCORE):
     GAME.blit(BACK,(0,0))
     GAME.blit(NUT,(nut.x,nut.y))
