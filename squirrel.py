@@ -1,12 +1,16 @@
 from telnetlib import GA
 import pygame
 import random
+
 WIDTH, HEIGHT = 900,600
 BG = (255,255,255)
 BLACK=(0,0,0)
+
 FPS=60
+
 pygame.font.init()
 pygame.mixer.init()
+
 SCORE__FONT = pygame.font.SysFont('comicsans',32)
 
 N_VELOCITY=5
@@ -26,6 +30,7 @@ SQUIRREL=pygame.image.load("Assets/squirrel.png")
 SQUIRREL=pygame.transform.scale(SQUIRREL,(110,110))
 
 NUT_COLLECTED = pygame.USEREVENT +1
+
 
 def draw(squirrel,nut,SCORE):
     GAME.blit(BACK,(0,0))
