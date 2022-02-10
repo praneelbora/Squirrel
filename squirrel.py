@@ -31,10 +31,12 @@ def draw(squirrel,nut,SCORE):
     GAME.blit(BACK,(0,0))
     GAME.blit(NUT,(nut.x,nut.y))
     GAME.blit(SQUIRREL,(squirrel.x,squirrel.y))
+    
     score = SCORE__FONT.render("SCORE : "+str(SCORE),1,True)
-    GAME.blit(score,(0,0))
-    pygame.display.update()
 
+    GAME.blit(score,(0,0))
+
+    pygame.display.update()
 
 def move_nut(squirrel,nut,nuts,SCORE):
     
