@@ -50,9 +50,7 @@ def move_nut(squirrel,nut,nuts,SCORE):
         if squirrel.colliderect(nut):
             pygame.event.post(pygame.event.Event(NUT_COLLECTED))
             nut.y=1000
-            nuts.remove(nut)
         elif nut.y + N_VELOCITY> 650:
-            nuts.remove(nut)
             nut.y=1000
 
 
