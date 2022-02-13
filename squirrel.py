@@ -62,13 +62,23 @@ def draw(squirrel,nuts,apples,SCORE,hearts,death):
             GAME.blit(RED,(pos,10))
         i+= 1
     if death==3:
-        game_over()
-
+        game_over(SCORE)
     pygame.display.update()
 
-def game_over():
+def game_over(SCORE):
     gameover= GAMEOVER.render("GAME OVER",2,True)
-    pygame.display.update()
+    f = open("highscore.txt", 'r')
+    score = f.read()
+    score = int(score)  
+    if score<SCORE:
+        f = open("highscore.txt",'w')
+        SCORE = str(SCORE)
+        score = f.write(SCORE)
+        print("Congrats you beat the High score!!!\n")
+    else:
+        print(f" Your score was {SCORE} and the high score is {score}\n")
+    
+
     GAME.blit(gameover,(270,250))
     pygame.display.update()
     time.sleep(5)
