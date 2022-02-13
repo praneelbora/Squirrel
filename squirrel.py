@@ -13,6 +13,7 @@ pygame.mixer.init()
 
 SCORE__FONT = pygame.font.SysFont('comicsans',32)
 
+
 N_VELOCITY=5
 S_VELOCITY=6.5
 
@@ -43,6 +44,7 @@ def draw(squirrel,nut,SCORE):
 
     pygame.display.update()
 
+
 def move_nut(squirrel,nut,nuts,SCORE):
     
     for nut in nuts:
@@ -63,6 +65,7 @@ def move_squirrel(keypress,squirrel):
         squirrel.x -= S_VELOCITY 
     if (keypress[pygame.K_RIGHT] and squirrel.x+S_VELOCITY+squirrel.width<WIDTH):
         squirrel.x += S_VELOCITY 
+
 
 def main():
     running = True
