@@ -26,9 +26,9 @@ BACK = pygame.transform.scale(BACK,(WIDTH,HEIGHT))
 GAMEOVER = pygame.font.SysFont('comicsans',64)
 
 NUT = pygame.image.load("Assets/nut.png")
-NUT = pygame.transform.scale(NUT,(50,50))
-APPLE = pygame.image.load("Assets/apple.png")
-APPLE = pygame.transform.scale(APPLE,(45,45))
+NUT = pygame.transform.scale(NUT,(45,45))
+BANANA = pygame.image.load("Assets/banana.png")
+BANANA = pygame.transform.scale(BANANA,(70,55))
 
 RED = pygame.image.load("Assets/red.png")
 RED = pygame.transform.scale(RED,(35,35))
@@ -38,17 +38,17 @@ WHITE = pygame.image.load("Assets/white.png")
 WHITE = pygame.transform.scale(WHITE,(35,35))
 
 SQUIRREL=pygame.image.load("Assets/squirrel.png")
-SQUIRREL=pygame.transform.scale(SQUIRREL,(110,110))
+SQUIRREL=pygame.transform.scale(SQUIRREL,(90,108))
 
 NUT_COLLECTED = pygame.USEREVENT +1
-APPLE_COLLECTED=pygame.USEREVENT +1
+BANANA_COLLECTED=pygame.USEREVENT +1
 
-def draw(squirrel,nuts,apples,SCORE,hearts,death):
+def draw(squirrel,nuts,bananas,SCORE,hearts,death):
     GAME.blit(BACK,(0,0))
     for nut in nuts:
         GAME.blit(NUT,(nut.x,nut.y))
-    for apple in apples:
-        GAME.blit(APPLE,(apple.x,apple.y))
+    for banana in bananas:
+        GAME.blit(BANANA,(banana.x,banana.y))
     GAME.blit(SQUIRREL,(squirrel.x,squirrel.y))
     
     
@@ -91,7 +91,7 @@ def game_over(SCORE):
 
     GAME.blit(gameover,(270,250))
     pygame.display.update()
-    time.sleep(3)
+    time.sleep(2)
     pygame.quit()
     
 def move_nut(squirrel,nut,nuts,SCORE):
@@ -108,21 +108,21 @@ def move_nut(squirrel,nut,nuts,SCORE):
             nut.y=1000
     return SCORE
 
-def move_apple(squirrel,apple,apples,SCORE):
+def move_banana(squirrel,banana,bananas,SCORE):
 
-    for apple in apples:
-        apple.y +=A_VELOCITY
-        if squirrel.colliderect(apple):          
-            pygame.event.post(pygame.event.Event(APPLE_COLLECTED))
-            apple.y=1000
+    for banana in bananas:
+        banana.y +=A_VELOCITY
+        if squirrel.colliderect(banana):          
+            pygame.event.post(pygame.event.Event(BANANA_COLLECTED))
+            banana.y=1000
             SCORE-=1
-            print("\nAPPLE : ",SCORE-1)
+            print("\nBANANA : ",SCORE-1)
             
             
-            apples.remove(apple)   
-        elif  apple.y + A_VELOCITY>650:
-            apple.y=1000
-            apples.remove(apple)    
+            bananas.remove(banana)   
+        elif  banana.y + A_VELOCITY>650:
+            banana.y=1000
+            bananas.remove(banana)    
     return SCORE       
 
 
@@ -137,7 +137,7 @@ def main():
     clock = pygame.time.Clock()
     
     nuts=[]
-    apples=[]
+    bananas=[]
     hearts=[maxhealth]
     for i in [0,maxhealth-1]:
         heart=pygame.Rect(770,10,35,35)
@@ -148,7 +148,7 @@ def main():
     SCORE = 0
     time  = 0
     
-    squirrel = pygame.Rect(100,450,110,110)
+    squirrel = pygame.Rect(100,450,90,108)
     number=90
     uplim=3
     GAME.fill(BG)
@@ -159,13 +159,13 @@ def main():
 
         rand = random.randint(1,uplim)
         
-        nut=pygame.Rect(loc1,100,50,50)
-        apple=pygame.Rect(loc2,100,45,45)
+        nut=pygame.Rect(loc1,100,45,45)
+        banana=pygame.Rect(loc2,100,70,55)
         
         time +=1
         if time == number:
             if rand==uplim:
-                apples.append(apple) 
+                bananas.append(banana) 
                 
 
             else:
@@ -184,11 +184,11 @@ def main():
         move_squirrel(keypress,squirrel,)
         SCORE=move_nut(squirrel,nut,nuts,SCORE)
         temp=SCORE
-        SCORE=move_apple(squirrel,apple,apples,SCORE)
+        SCORE=move_banana(squirrel,banana,bananas,SCORE)
         if(temp>SCORE):
             death+=1
             
-        draw(squirrel,nuts,apples,SCORE,hearts,death)  
+        draw(squirrel,nuts,bananas,SCORE,hearts,death)  
     pygame.quit()
     print("\n\n",SCORE,"\n\n")
 
