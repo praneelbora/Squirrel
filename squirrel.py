@@ -91,7 +91,7 @@ def game_over(SCORE):
 
     GAME.blit(gameover,(270,250))
     pygame.display.update()
-    time.sleep(5)
+    time.sleep(3)
     pygame.quit()
     
 def move_nut(squirrel,nut,nuts,SCORE):

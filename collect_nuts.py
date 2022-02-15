@@ -17,12 +17,10 @@ SCORE__FONT = pygame.font.SysFont('comicsans',32)
 N_VELOCITY=5
 S_VELOCITY=6.5
 
-GAME = pygame.display.set_mode((900,600))
+GAME = pygame.display.set_mode((WIDTH,HEIGHT))
 
 BACK = pygame.image.load("Assets/tile.jpg")
 BACK = pygame.transform.scale(BACK,(WIDTH,HEIGHT))
-
-
 
 NUT = pygame.image.load("Assets/nut.png")
 NUT = pygame.transform.scale(NUT,(50,50))
@@ -38,26 +36,24 @@ def draw(squirrel,nut,SCORE):
     GAME.blit(NUT,(nut.x,nut.y))
     GAME.blit(SQUIRREL,(squirrel.x,squirrel.y))
     
-    score = SCORE__FONT.render("SCORE : "+str(SCORE),1,True)
+    score = SCORE__FONT.render("SCORE : "+str(SCORE),1,(0,0,0))
 
     GAME.blit(score,(0,0))
 
     pygame.display.update()
 
-
-def move_nut(squirrel,nut,nuts,SCORE):
+def move_nut(squirrel,nut,nuts):
     
     for nut in nuts:
         nut.y +=N_VELOCITY
+        
         if squirrel.colliderect(nut):
             pygame.event.post(pygame.event.Event(NUT_COLLECTED))
             nut.y=1000
             nuts.remove(nut)
         elif nut.y + N_VELOCITY> 650:
-            nuts.remove(nut)
             nut.y=1000
-
-
+            nuts.remove(nut)
 
 
 def move_squirrel(keypress,squirrel):
@@ -71,16 +67,22 @@ def main():
     running = True
     clock = pygame.time.Clock()
     SCORE =0
+
     nuts=[]
+
     time = 0
+
     squirrel = pygame.Rect(100,450,110,110)
     
     GAME.fill(BG)
+
     while running:
         loc=  random.randrange(0,850,50)
+
+
         number=100
         if time %number <1:
-            nut = pygame.Rect(loc,100,50,50)
+            nut = pygame.Rect(loc,100,50,50)  
             nuts.append(nut)
             if time>number:
                 time/=number
@@ -94,8 +96,8 @@ def main():
             if event.type == NUT_COLLECTED:
                 SCORE +=1
         keypress = pygame.key.get_pressed()
-        move_squirrel(keypress,squirrel,)
-        move_nut(squirrel,nut,nuts,SCORE)
+        move_squirrel(keypress,squirrel)
+        move_nut(squirrel,nut,nuts)
         draw(squirrel,nut,SCORE)  
     pygame.quit()
     print("\n\n",SCORE,"\n\n")
