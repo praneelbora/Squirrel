@@ -12,6 +12,7 @@ pygame.font.init()
 pygame.mixer.init()
 
 SCORE_FONT = pygame.font.SysFont('comicsans',32)
+HIGH_FONT= pygame.font.SysFont('comicsans',16)
 
 N_VELOCITY=5
 S_VELOCITY=6.5
@@ -19,7 +20,7 @@ A_VELOCITY=5
 
 GAME = pygame.display.set_mode((900,600))
 
-BACK = pygame.image.load("Assets/tile.jpg")
+BACK = pygame.image.load("Assets/jungle.jpeg")
 BACK = pygame.transform.scale(BACK,(WIDTH,HEIGHT))
 
 GAMEOVER = pygame.font.SysFont('comicsans',64)
@@ -50,9 +51,18 @@ def draw(squirrel,nuts,apples,SCORE,hearts,death):
         GAME.blit(APPLE,(apple.x,apple.y))
     GAME.blit(SQUIRREL,(squirrel.x,squirrel.y))
     
+    
     score = SCORE_FONT.render("SCORE : "+str(SCORE),2,True)
+    
+    f = open("highscore.txt", 'r')
+    highscore = f.read()
+    highscore = int(highscore)
+
+
+    high=HIGH_FONT.render(f"High Score : {highscore}",2,True)
 
     GAME.blit(score,(0,0))
+    GAME.blit(high,(0,40))
     i=0
     for heart in hearts:
         pos=770+i*40
@@ -68,15 +78,15 @@ def draw(squirrel,nuts,apples,SCORE,hearts,death):
 def game_over(SCORE):
     gameover= GAMEOVER.render("GAME OVER",2,True)
     f = open("highscore.txt", 'r')
-    score = f.read()
-    score = int(score)  
-    if score<SCORE:
+    highscore = f.read()
+    highscore = int(highscore)  
+    if highscore<SCORE:
         f = open("highscore.txt",'w')
         SCORE = str(SCORE)
-        score = f.write(SCORE)
+        highscore = f.write(SCORE)
         print("Congrats you beat the High score!!!\n")
     else:
-        print(f" Your score was {SCORE} and the high score is {score}\n")
+        print(f" Your score was {SCORE} and the high score is {highscore}\n")
     
 
     GAME.blit(gameover,(270,250))
