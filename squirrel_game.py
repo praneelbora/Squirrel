@@ -20,7 +20,7 @@ TEXT1_FONT = pygame.font.SysFont('comicsans',40)
 TEXT2_FONT = pygame.font.SysFont('comicsans',40)
 N_VELOCITY=5
 S_VELOCITY=6.5
-A_VELOCITY=5
+B_VELOCITY=5
 
 GAME = pygame.display.set_mode((900,600))
 
@@ -153,7 +153,7 @@ def move_nut(squirrel,nut,nuts,SCORE):
 
 def move_banana(squirrel,banana,bananas,SCORE):
     for banana in bananas:
-        banana.y +=A_VELOCITY
+        banana.y +=B_VELOCITY
         if squirrel.colliderect(banana):          
             pygame.event.post(pygame.event.Event(BANANA_COLLECTED))
             banana.y=1000
@@ -162,7 +162,7 @@ def move_banana(squirrel,banana,bananas,SCORE):
             
             
             bananas.remove(banana)   
-        elif  banana.y + A_VELOCITY>650:
+        elif  banana.y + B_VELOCITY>650:
             banana.y=1000
             bananas.remove(banana)    
     return SCORE       
