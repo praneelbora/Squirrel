@@ -122,7 +122,7 @@ def tryagain(keypress):
     condition=True
     check=0
     while(condition):
-        ques=QUES_FONT.render("Press 1 to continue, 2 to exit",2,(255,255,255))
+        ques=QUES_FONT.render("Press S to Start, E to Exit",2,(255,255,255))
         GAME.blit(ques,(190,330))
         pygame.display.update()
         for event in pygame.event.get():
@@ -130,10 +130,10 @@ def tryagain(keypress):
                 condition=False
                 return 2
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_1:
+                if event.key == pygame.K_s:
                     condition=False
                     return 1
-                if event.key == pygame.K_2:
+                if event.key == pygame.K_e:
                     condition=False
                     return 2
 
@@ -220,10 +220,10 @@ def main():
             if event.type == pygame.QUIT:
                 running=False
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_1:
+                if event.key == pygame.K_s:
                     main()
                     
-                if event.key == pygame.K_2:
+                if event.key == pygame.K_e:
                     pygame.quit()
                 
         keypress = pygame.key.get_pressed()
