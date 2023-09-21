@@ -14,8 +14,9 @@ FPS=70
 maxhealth=3
 pygame.font.init()
 pygame.mixer.init()
+#absdwesdadhbfakheb
 
-SCORE_FONT = pygame.font.SysFont('comicsans',24)
+SCORE_FONT = pygame.font.SysFont('comicsans',32)
 HIGH_FONT= pygame.font.SysFont('comicsans',18)
 QUES_FONT = pygame.font.SysFont('comicsans',40)
 
