@@ -21,7 +21,7 @@ TEXT2_FONT = pygame.font.SysFont('comicsans',40)
 N_VELOCITY=5
 S_VELOCITY=6.5
 B_VELOCITY=5
-
+#my changes
 GAME = pygame.display.set_mode((900,600))
 
 BACK = pygame.image.load("Assets/Backgrounds/jungle.jpeg")
