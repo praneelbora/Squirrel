@@ -7,7 +7,7 @@ WIDTH, HEIGHT = 900,600
 BG = (255,255,255)
 BLACK=(0,0,0)
 
-FPS=60
+FPS=600
 maxhealth=3
 pygame.font.init()
 pygame.mixer.init()
@@ -21,7 +21,7 @@ TEXT2_FONT = pygame.font.SysFont('comicsans',40)
 N_VELOCITY=5
 S_VELOCITY=6.5
 B_VELOCITY=5
-#my changes 2
+#my changhjmmmm];kjges 2
 GAME = pygame.display.set_mode((900,600))
 
 BACK = pygame.image.load("Assets/Backgrounds/jungle.jpeg")
