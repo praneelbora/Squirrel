@@ -4,14 +4,14 @@ import random
 import time
 
 WIDTH, HEIGHT = 900,600
-BG = (255,255,255)
+BG = (255,255,99)
 BLACK=(0,0,0)
 
-FPS=600
+FPS=70
 maxhealth=3
 pygame.font.init()
 pygame.mixer.init()
-#alfi says hi
+
 SCORE_FONT = pygame.font.SysFont('comicsans',32)
 HIGH_FONT= pygame.font.SysFont('comicsans',18)
 QUES_FONT = pygame.font.SysFont('comicsans',40)
