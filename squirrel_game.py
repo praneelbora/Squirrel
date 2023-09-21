@@ -11,7 +11,7 @@ FPS=60
 maxhealth=3
 pygame.font.init()
 pygame.mixer.init()
-
+#alfi says hi
 SCORE_FONT = pygame.font.SysFont('comicsans',32)
 HIGH_FONT= pygame.font.SysFont('comicsans',18)
 QUES_FONT = pygame.font.SysFont('comicsans',40)
